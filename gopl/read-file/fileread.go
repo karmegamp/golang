@@ -10,7 +10,7 @@ import (
 
 var fileArg = flag.String("f", "fileread.go", "lookup file name")
 
-func ReadFile1(f *os.File, lines map[string]int) {
+func ReadLineByLine(f *os.File, lines map[string]int) {
 	scanner := bufio.NewScanner(f)
 	for scanner.Scan() {
 		text := strings.TrimSpace(scanner.Text())
@@ -21,7 +21,7 @@ func ReadFile1(f *os.File, lines map[string]int) {
 	}
 }
 
-func ReadFile2(f *os.File, lines map[string]int) {
+func ReadWholeFile(f *os.File, lines map[string]int) {
 	file, _ := os.ReadFile(f.Name())
 	data := strings.SplitSeq(string(file), "\n")
 	for v := range data {
@@ -40,7 +40,7 @@ func main() {
 	lines := make(map[string]int)
 	f, _ := os.Open(*fileArg)
 
-	ReadFile1(f, lines)
+	ReadLineByLine(f, lines)
 
 	for k, v := range lines {
 		fmt.Printf("\n")
@@ -50,7 +50,7 @@ func main() {
 	fmt.Println("\n\n---- end of read ------")
 
 	lines = make(map[string]int)
-	ReadFile2(f, lines)
+	ReadWholeFile(f, lines)
 
 	for k, v := range lines {
 		fmt.Printf("\n")
