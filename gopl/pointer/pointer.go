@@ -31,7 +31,7 @@ func main() {
 	*r = 5
 	fmt.Println(*r)
 
-	// pointer to int factory
+	// pointer to unname int factory
 	s := newInt()
 	t := newInt()
 	*s = 6
