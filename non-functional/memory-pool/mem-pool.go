@@ -15,6 +15,8 @@ func objectFactory() any {
 
 // Create pool of reusable object collection cache
 func objectPool() *sync.Pool {
+
+	// define the pool object
 	pool := &sync.Pool{
 		New: objectFactory,
 	}
@@ -26,7 +28,7 @@ func objectPool() *sync.Pool {
 		pool.Put(d)
 	}
 
-	// test for not returning the object to pool
+	// not returning the object to pool
 	fmt.Println("Getting random object from pool : ", pool.Get())
 	fmt.Println("Getting random object from pool : ", pool.Get())
 	fmt.Println("===============================================")
