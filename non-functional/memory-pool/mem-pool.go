@@ -20,12 +20,10 @@ func objectPool() *sync.Pool {
 	}
 
 	// pre create 10 object in the pool
-	var i int = 0
-	for range 10 {
+	for i := range 10 {
 		d := pool.New()
 		d = i
 		pool.Put(d)
-		i++
 	}
 
 	// test for not returning the object to pool
