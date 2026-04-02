@@ -8,7 +8,7 @@ import (
 /*
 ch := make(chan int, 3)
 
-// critical section: only 3 client can access at a time
+// critical section: only 3 client can access foo function at a time
 foo := func(r int) {
 	ch<-1
 	sleep(3 Sec)
